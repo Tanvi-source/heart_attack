@@ -1,0 +1,38 @@
+<!-- templates/predict.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Heart Attack Predictor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <nav class="bg-red-600 p-4 text-white flex justify-between">
+    <h1 class="text-xl font-bold">Heart Health</h1>
+    <a href="{% url 'logout' %}" class="hover:text-yellow-300">Logout</a>
+  </nav>
+
+  <main class="p-8 max-w-3xl mx-auto bg-white shadow-lg rounded-lg mt-10">
+    <h2 class="text-2xl font-semibold text-center mb-6">Enter Your Health Details</h2>
+    <form method="POST">
+      {% csrf_token %}
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input name="age" type="number" placeholder="Age" class="border p-2 rounded" required/>
+        <input name="gender" type="text" placeholder="Gender (M/F)" class="border p-2 rounded" required/>
+        <input name="trtbps" type="number" placeholder="Resting Blood Pressure" class="border p-2 rounded" required/>
+        <input name="chol" type="number" placeholder="Cholesterol" class="border p-2 rounded" required/>
+        <input name="fbs" type="number" placeholder="Fasting Blood Sugar (>120 mg/dl, 1=True, 0=False)" class="border p-2 rounded" required/>
+        <input name="rest_ecg" type="number" placeholder="Rest ECG (0,1,2)" class="border p-2 rounded" required/>
+        <input name="thalachh" type="number" placeholder="Max Heart Rate Achieved" class="border p-2 rounded" required/>
+        <input name="exng" type="number" placeholder="Exercise Induced Angina (1=True, 0=False)" class="border p-2 rounded" required/>
+        <input name="ca" type="number" placeholder="Number of Major Vessels (0–3)" class="border p-2 rounded" required/>
+        <input name="thall" type="number" placeholder="Thalassemia (0=Normal, 1=Fixed Defect, 2=Reversible)" class="border p-2 rounded" required/>
+      </div>
+      <div class="mt-6 text-center">
+        <button type="submit" class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-md">Predict</button>
+      </div>
+    </form>
+  </main>
+</body>
+</html>

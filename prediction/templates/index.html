@@ -1,0 +1,25 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Heart Attack Prediction - Home</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-gray-800">
+  <nav class="bg-red-600 p-4 text-white flex justify-between">
+    <h1 class="text-xl font-bold">Heart Health</h1>
+    <div>
+      <a href="{% url 'predict' %}" class="px-4 hover:text-yellow-300">Predict</a>
+      <a href="{% url 'logout' %}" class="px-4 hover:text-yellow-300">Logout</a>
+    </div>
+  </nav>
+
+  <main class="p-8">
+    <h2 class="text-2xl font-semibold mb-4">Welcome to Heart Attack Prediction</h2>
+    <p class="mb-6">Click below to input health parameters and find out your heart attack risk.</p>
+    <a href="{% url 'predict' %}" class="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-md">Start Prediction</a>
+  </main>
+</body>
+</html>

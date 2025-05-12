@@ -1,0 +1,44 @@
+<!-- templates/login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - Heart Health</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-image: url('https://media.istockphoto.com/id/1457409135/photo/red-heart-stethoscope-on-electrocardiogram-paper.jpg?s=612x612&w=0&k=20&c=38AUbxK8q5OW6A6hy0B_5v4fUGDLy_l7RbMrmtmQ5R8='); /* Replace with your image */
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+  </style>
+</head>
+<body class="bg-black bg-opacity-60 text-white">
+  <div class="flex justify-center items-center h-screen">
+    <div class="bg-white text-black p-8 rounded-lg shadow-lg w-full max-w-md">
+      <h2 class="text-2xl font-bold text-center text-red-600 mb-6">Login</h2>
+      {% if error %}<p class="text-red-600 text-sm mb-4">{{ error }}</p>{% endif %}
+      <form method="POST" action="{% url 'login' %}">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Username" required class="w-full mb-4 px-4 py-2 border rounded-md"/>
+        <input type="password" id="password" name="password" placeholder="Password" required class="w-full mb-2 px-4 py-2 border rounded-md"/>
+        <div class="flex items-center mb-4">
+          <input type="checkbox" id="show-password" class="mr-2" />
+          <label for="show-password">Show Password</label>
+        </div>
+        <button type="submit" class="w-full bg-red-600 text-white py-2 rounded-md">Login</button>
+      </form>
+      <p class="mt-4 text-center">New user? <a href="{% url 'signup' %}" class="text-red-600 hover:underline">Sign up</a></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('show-password').addEventListener('change', function() {
+      const passwordField = document.getElementById('password');
+      passwordField.type = this.checked ? 'text' : 'password';
+    });
+  </script>
+</body>
+</html>
